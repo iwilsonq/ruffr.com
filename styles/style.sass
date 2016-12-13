@@ -1,6 +1,10 @@
-html, body, div
+html, body, div, ul, li
   margin: 0
   padding: 0
+
+a
+  text-decoration: none
+  color: #2d2d2d
 
 .pets-container
   margin: 15px
@@ -15,3 +19,24 @@ html, body, div
     flex: 0 1 auto
     border: 1px solid rgba(0,0,0,0.1)
     border-radius: 4px
+
+
+.navbar-wrapper
+  width: 100%
+  border: 1px solid rgba(0,0,0,0.1)
+.navbar
+  margin: 0 auto
+  max-width: 1000px
+  padding: 10px 20px
+  display: flex
+  justify-content: space-between
+  .navbar-brand
+    flex: 3
+  ul
+    flex: 1
+    display: flex
+    list-style: none
+  li
+    display: flex
+    justify-content: flex-end
+    flex: 1
