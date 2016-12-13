@@ -1,4 +1,4 @@
-html, body, div, ul, li
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6
   margin: 0
   padding: 0
 
@@ -7,18 +7,24 @@ a
   color: #2d2d2d
 
 .pets-container
-  margin: 15px
+  margin: 25px 80px
   display: flex
   flex-wrap: wrap
   justify-content: center
-  .pet
-    padding: 15px
+  .card
+    display: flex
+    flex-direction: column
     margin: 5px
-    width: 25%
+    width: 300px
     height: 270px
-    flex: 0 1 auto
+    flex: 1 1 250px
     border: 1px solid rgba(0,0,0,0.1)
     border-radius: 4px
+    .card-section
+      display: flex
+      border-bottom: 1px solid rgba(0,0,0,0.1)
+      img
+        width: 100%
 
 
 .navbar-wrapper
