@@ -15,15 +15,15 @@ class PetsContainer extends Component {
   }
 
   renderCards() {
-    const { name, pictures } = this.state.pets;
+    const { pets } = this.state;
 
-    return this.state.pets.map((pet, i) =>
-      <Card key={i}>
+    return pets.map(pet =>
+      <Card key={pet._id}>
         <CardSection>
-          <img src={`http://localhost:4000/images/${pet.pictures[0]}`} alt={`${name}`} />
+          <img src={`http://localhost:4000/images/${pet.pictures[0]}`} alt={`${pet.name}`} />
         </CardSection>
         <CardSection>
-          <h3>{name}</h3>
+          <h4>{pet.name}</h4>
         </CardSection>
       </Card>
     );

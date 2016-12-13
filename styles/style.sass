@@ -15,17 +15,21 @@ a
     display: flex
     flex-direction: column
     margin: 5px
-    width: 300px
-    height: 270px
-    flex: 1 1 250px
+    max-width: 300px
+    height: 280px
+    flex: 1 1 300px
     border: 1px solid rgba(0,0,0,0.1)
     border-radius: 4px
     .card-section
       display: flex
+      position: relative
+      justify-content: space-between
+      flex-direction: row
       border-bottom: 1px solid rgba(0,0,0,0.1)
       img
         width: 100%
-
+      h4
+        padding: 10px 10px 5px 10px
 
 .navbar-wrapper
   width: 100%
