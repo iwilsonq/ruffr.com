@@ -6,8 +6,6 @@ import App from './app';
 import PetsContainer from './components/PetsContainer';
 import NewPost from './components/New';
 
-console.log('death');
-
 render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>

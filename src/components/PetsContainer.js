@@ -21,7 +21,8 @@ class PetsContainer extends Component {
   }
 
   handleOutsideCardClick() {
-    this.setState({ showExpandedCard: [false, null] });
+    if (this.state.showExpandedCard[0])
+      this.setState({ showExpandedCard: [false, null] });
   }
 
   renderCards() {
