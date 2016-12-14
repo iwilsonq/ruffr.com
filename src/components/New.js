@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import Axios from 'axios';
 
 class NewPost extends Component {
@@ -11,7 +12,7 @@ class NewPost extends Component {
   handleSubmit() {
     Axios.post('http://localhost:4000/create', {
       ...this.state
-    }).then(results => console.log(results));
+    }).then(() => browserHistory.push('/'));
   }
 
   handleTextChange(e) {
@@ -29,7 +30,6 @@ class NewPost extends Component {
     const reader = new FileReader();
     reader.onload = (aImg => e => {
         aImg.src = e.target.result;
-        console.log(this);
         this.setState({ image: e.target.result });
     })(img);
     reader.readAsDataURL(selectedFile);

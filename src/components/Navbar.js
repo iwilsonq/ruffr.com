@@ -6,7 +6,9 @@ export default class Navbar extends Component {
     return (
       <div className="navbar-wrapper">
         <nav className="navbar">
-          <div className="navbar-brand">Ruffr</div>
+          <div className="navbar-brand">
+            <Link to='/'>Ruffr</Link>
+          </div>
           <ul>
             <li className="nav-link"><Link to='/new'>New Post</Link></li>
             <li className="nav-link"><Link to='/'>Alerts</Link></li>
