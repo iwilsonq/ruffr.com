@@ -6,6 +6,23 @@ a
   text-decoration: none
   color: #2d2d2d
 
+.card-expanded-container
+  position: absolute
+  background-color: rgba(0,0,0,0.4)
+  z-index: 2
+  .card-expanded
+    display: flex
+    flex-direction: column
+    flex: 1 1 500px
+    justify-content: center
+    border: 1px solid rgba(0,0,0,0.1)
+    border-radius: 4px
+    .card-section
+      background-color: #fff
+      justify-content: space-between
+      flex-direction: row
+      border-bottom: 1px solid rgba(0,0,0,0.1)
+
 .pets-container
   margin: 25px 80px
   display: flex
@@ -20,12 +37,17 @@ a
     flex: 1 1 300px
     border: 1px solid rgba(0,0,0,0.1)
     border-radius: 4px
+    transition: 0.3s
+    &:hover
+      transform: scale(1.1)
+      transition: 0.3s
     .card-section
       display: flex
       position: relative
       justify-content: space-between
       flex-direction: row
       border-bottom: 1px solid rgba(0,0,0,0.1)
+      background-color: #fff
       img
         width: 100%
       h4
