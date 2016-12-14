@@ -31,7 +31,7 @@ class PetsContainer extends Component {
     return pets.map(pet =>
       <Card key={pet._id} onClick={this.handleCardClick.bind(this, pet)}>
         <CardSection>
-          <img src={`http://localhost:4000/images/${pet.pictures[0]}`} alt={`${pet.name}`} />
+          <img src={`${pet.pictures[0]}`} alt={`${pet.name}`} />
         </CardSection>
         <CardSection>
           <h4>{pet.name}</h4>
@@ -50,7 +50,7 @@ class PetsContainer extends Component {
     return (
       <CardExpanded>
         <CardSection>
-          <img src={`http://localhost:4000/images/${card.pictures[0]}`} alt={`${card.name}`} />
+          <img src={`${card.pictures[0]}`} alt={`${card.name}`} />
         </CardSection>
         <CardSection>
           <h4>{card.name}</h4>

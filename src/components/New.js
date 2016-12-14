@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 class NewPost extends Component {
   state = {
@@ -8,11 +9,30 @@ class NewPost extends Component {
   };
 
   handleSubmit() {
-    console.log(this.state);
+    Axios.post('http://localhost:4000/create', {
+      ...this.state
+    }).then(results => console.log(results));
   }
 
   handleTextChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleImageUpload() {
+    const selectedFile = document.getElementById('image-upload').files[0];
+    const img = document.createElement('img');
+    img.file = selectedFile;
+
+    const preview = document.getElementsByClassName('preview')[0];
+    preview.appendChild(img);
+
+    const reader = new FileReader();
+    reader.onload = (aImg => e => {
+        aImg.src = e.target.result;
+        console.log(this);
+        this.setState({ image: e.target.result });
+    })(img);
+    reader.readAsDataURL(selectedFile);
   }
 
   render() {
@@ -40,9 +60,12 @@ class NewPost extends Component {
           <label>Picture</label>
           <input
             type="file"
-            name="name"
-            value={this.state.image}
+            name="image"
+            id="image-upload"
+            onChange={this.handleImageUpload.bind(this)}
           />
+          <div className="preview" />
+
         </div>
         <div className="new-section">
           <button
