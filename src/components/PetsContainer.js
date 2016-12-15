@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+
 import Card from './Card';
 import CardSection from './CardSection';
 import CardExpanded from './CardExpanded';
@@ -25,13 +26,18 @@ class PetsContainer extends Component {
       this.setState({ showExpandedCard: [false, null] });
   }
 
+  handleCardDestroy(imageId) {
+    Axios.post('http://localhost:4000/destroy', { image_id: imageId })
+      .then(response => console.log(response));
+  }
+
   renderCards() {
     const { pets } = this.state;
 
     return pets.map(pet =>
       <Card key={pet._id} onClick={this.handleCardClick.bind(this, pet)}>
         <CardSection>
-          <img src={`${pet.pictures[0]}`} alt={`${pet.name}`} />
+          <img src={`${pet.image}`} alt={`${pet.name}`} />
         </CardSection>
         <CardSection>
           <h4>{pet.name}</h4>
@@ -44,19 +50,25 @@ class PetsContainer extends Component {
     const { showExpandedCard } = this.state;
     const card = showExpandedCard[1];
 
-    document.querySelector('body')
+    document.querySelector('.navbar')
       .addEventListener('click', this.handleOutsideCardClick.bind(this));
 
     return (
-      <CardExpanded>
-        <CardSection>
-          <img src={`${card.pictures[0]}`} alt={`${card.name}`} />
-        </CardSection>
-        <CardSection>
-          <h4>{card.name}</h4>
-          <p>{card.about}</p>
-        </CardSection>
-      </CardExpanded>
+        <CardExpanded>
+          <CardSection>
+            <img src={`${card.image}`} alt={`${card.name}`} />
+          </CardSection>
+          <CardSection>
+            <h4>{card.name}</h4>
+            <p>{card.about}</p>
+            <button
+              type="button"
+              onClick={this.handleCardDestroy.bind(this, card.image_id)}
+            >
+            Destroy
+            </button>
+          </CardSection>
+        </CardExpanded>
     );
   }
 

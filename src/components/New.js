@@ -5,14 +5,23 @@ import Axios from 'axios';
 class NewPost extends Component {
   state = {
     name: '',
-    about: '',
-    image: ''
+    about: ''
   };
 
   handleSubmit() {
-    Axios.post('http://localhost:4000/create', {
-      ...this.state
-    }).then(() => browserHistory.push('/'));
+    console.log('submit');
+    let data = new FormData();
+    data.append('name', `${this.state.name}`);
+    data.append('about', `${this.state.about}`);
+    data.append('image', document.getElementById('image-upload').files[0]);
+
+    Axios({
+      method: 'post',
+      url: 'http://localhost:4000/create',
+      data
+    })
+    .then(response => console.log(response))
+    .then(() => browserHistory.push('/'));
   }
 
   handleTextChange(e) {
@@ -38,42 +47,42 @@ class NewPost extends Component {
   render() {
     return (
       <div className="new-post">
-        <div className="new-section">
-          <label>Name</label>
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleTextChange.bind(this)}
-          />
-        </div>
-        <div className="new-section">
-          <label>About</label>
-          <input
-            type="text"
-            name="about"
-            value={this.state.about}
-            onChange={this.handleTextChange.bind(this)}
-          />
-        </div>
-        <div className="new-section">
-          <label>Picture</label>
-          <input
-            type="file"
-            name="image"
-            id="image-upload"
-            onChange={this.handleImageUpload.bind(this)}
-          />
-          <div className="preview" />
+          <div className="new-section">
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleTextChange.bind(this)}
+            />
+          </div>
+          <div className="new-section">
+            <label>About</label>
+            <input
+              type="text"
+              name="about"
+              value={this.state.about}
+              onChange={this.handleTextChange.bind(this)}
+            />
+          </div>
+          <div className="new-section">
+            <label>Picture</label>
+            <input
+              type="file"
+              name="image"
+              id="image-upload"
+              onChange={this.handleImageUpload.bind(this)}
+            />
+            <div className="preview" />
 
-        </div>
-        <div className="new-section">
-          <button
-            type="button"
-            onClick={this.handleSubmit.bind(this)}
-          >
-            Submit
-          </button>
+          </div>
+          <div className="new-section">
+            <button
+              type="button"
+              onClick={this.handleSubmit.bind(this)}
+            >
+              Submit
+            </button>
         </div>
       </div>
     );
