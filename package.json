@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
+  "engines": {
+    "node": "6.4.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/iwilsonq/ruffr.com.git"

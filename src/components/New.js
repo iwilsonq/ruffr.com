@@ -17,7 +17,7 @@ class NewPost extends Component {
 
     Axios({
       method: 'post',
-      url: 'http://localhost:4000/create',
+      url: 'https://api-ruffr.herokuapp.com/create',
       data
     })
     .then(response => console.log(response))

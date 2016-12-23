@@ -12,7 +12,7 @@ class PetsContainer extends Component {
   };
 
   componentDidMount() {
-    Axios.get('http://localhost:4000/pets')
+    Axios.get('https://api-ruffr.herokuapp.com/pets')
       .then(results => results.data)
       .then(pets => this.setState({ pets }));
   }
@@ -27,7 +27,7 @@ class PetsContainer extends Component {
   }
 
   handleCardDestroy(imageId) {
-    Axios.post('http://localhost:4000/destroy', { image_id: imageId })
+    Axios.post('https://api-ruffr.herokuapp.com/destroy', { image_id: imageId })
       .then(response => console.log(response));
   }
 
