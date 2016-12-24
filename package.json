@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "dist": "NODE_ENV='production' webpack -p",
-    "postinstall": "npm run dist",
+    "postinstall": "npm run dist"
   },
   "engines": {
     "node": "6.4.0"
