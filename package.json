@@ -4,7 +4,9 @@
   "description": "Web implementation of ruffr",
   "main": "index.js",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dist": "NODE_ENV='production' webpack -p",
+    "postinstall": "npm run dist",
   },
   "engines": {
     "node": "6.4.0"
@@ -35,6 +37,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
     "css-loader": "^0.26.1",
+    "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.0.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",

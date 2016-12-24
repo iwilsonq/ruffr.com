@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-module.exports = {
+const config = {
   entry: [
     './src/index.js'
   ],
@@ -32,9 +32,37 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './',
-    port: 1337
-  }
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+  ],
 };
+
+if (process.env.NODE_ENV === 'production') {
+    config.output.path = 'build';
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                screw_ie8: true
+            }
+        })
+    )
+
+} else {
+    config.devtool = "#cheap-module-source-map"
+    config.devServer = {
+        hot: true,
+        inline: true,
+        historyApiFallback: true,
+        contentBase: './',
+        port: 1337
+    }
+    config.plugins.push(
+        new webpack.HotModuleReplacementPlugin()
+    );
+}
+
+module.exports = config;
