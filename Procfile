@@ -1,1 +1,1 @@
-web: npm run postinstall; node build/app.js;
+web: npm run prod
