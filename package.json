@@ -9,6 +9,7 @@
     "prod": "node build/app.js"
   },
   "engines": {
+    "npm": "3.10.9",
     "node": "6.4.0"
   },
   "repository": {
