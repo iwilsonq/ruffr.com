@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import Axios from 'axios';
+import CroppingTool from './CroppingTool';
 
 class NewPost extends Component {
   state = {
     name: '',
-    about: ''
+    about: '',
+    image: ''
   };
 
   handleSubmit() {
-    console.log('submit');
+    const { name, about, image } = this.state;
     let data = new FormData();
-    data.append('name', `${this.state.name}`);
-    data.append('about', `${this.state.about}`);
-    data.append('image', document.getElementById('image-upload').files[0]);
+    data.append('name', name);
+    data.append('about', about);
+    data.append('image', image);
 
     Axios({
       method: 'post',
@@ -28,20 +30,8 @@ class NewPost extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleImageUpload() {
-    const selectedFile = document.getElementById('image-upload').files[0];
-    const img = document.createElement('img');
-    img.file = selectedFile;
-
-    const preview = document.getElementsByClassName('preview')[0];
-    preview.appendChild(img);
-
-    const reader = new FileReader();
-    reader.onload = (aImg => e => {
-        aImg.src = e.target.result;
-        this.setState({ image: e.target.result });
-    })(img);
-    reader.readAsDataURL(selectedFile);
+  handleImageUpload(image) {
+    this.setState({ image })
   }
 
   render() {
@@ -65,15 +55,17 @@ class NewPost extends Component {
               onChange={this.handleTextChange.bind(this)}
             />
           </div>
+
           <div className="new-section">
-            <label>Picture</label>
-            <input
-              type="file"
-              name="image"
-              id="image-upload"
-              onChange={this.handleImageUpload.bind(this)}
+
+
+          <label>Picture</label>
+
+            <CroppingTool
+              onCrop={this.handleImageUpload.bind(this)}
             />
-            <div className="preview" />
+
+            <div id="image-preview" />
 
           </div>
           <div className="new-section">

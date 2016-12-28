@@ -20,7 +20,7 @@ const config = {
         }
       },
       {
-        test: /\.sass$/,
+        test: /\.(css|sass)$/,
         loaders: ['style', 'css', 'sass']
       },
       {
@@ -52,14 +52,14 @@ if (process.env.NODE_ENV === 'production') {
     )
 
 } else {
-    config.devtool = "#cheap-module-source-map"
+    config.devtool = "#cheap-module-source-map";
     config.devServer = {
         hot: true,
         inline: true,
         historyApiFallback: true,
         contentBase: './',
         port: 1337
-    }
+    };
     config.plugins.push(
         new webpack.HotModuleReplacementPlugin()
     );
