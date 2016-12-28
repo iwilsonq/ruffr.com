@@ -42,7 +42,7 @@ const config = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-    config.output.path = 'build';
+    config.output.publicPath = '/build';
     config.plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
